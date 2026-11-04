@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dxxeaw6pdg6nd"]
+
+[ext_resource type="Script" uid="uid://c5uknmnaa1cyi" path="res://microgames/Jumping_FROG/Balloon/balloon.gd" id="1_3j6t5"]
+[ext_resource type="Texture2D" uid="uid://dx06vmfbm23hn" path="res://microgames/Jumping_FROG/Balloon/balloon_sprite.png" id="1_nktvl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nktvl"]
+size = Vector2(116, 65)
+
+[node name="Balloon" type="Area2D" unique_id=655949308]
+script = ExtResource("1_3j6t5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=436335505]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_nktvl")
+hframes = 2
+vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009258153]
+position = Vector2(-3, -31)
+shape = SubResource("RectangleShape2D_nktvl")

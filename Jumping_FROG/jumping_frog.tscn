@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://bryfxcf7hxg7p"]
+
+[ext_resource type="PackedScene" uid="uid://bf3ht1n432w0b" path="res://microgames/Jumping_FROG/Frog/Frog.tscn" id="1_fewrs"]
+[ext_resource type="Script" uid="uid://btvdqginp1teu" path="res://microgames/Jumping_FROG/jumping_frog.gd" id="1_tcd18"]
+[ext_resource type="PackedScene" uid="uid://ddhoio73023ba" path="res://scenes/main/bomb_timer/bomb_timer.tscn" id="2_bj650"]
+[ext_resource type="Texture2D" uid="uid://ct0o5h0bsyftc" path="res://microgames/Jumping_FROG/bg/5.png" id="3_gdnhn"]
+[ext_resource type="PackedScene" uid="uid://dxxeaw6pdg6nd" path="res://microgames/Jumping_FROG/Balloon/balloon.tscn" id="4_agob1"]
+[ext_resource type="Texture2D" uid="uid://cepll0h48ni73" path="res://microgames/Jumping_FROG/bg/0.png" id="5_muypk"]
+[ext_resource type="Texture2D" uid="uid://drl0pifufgl8g" path="res://microgames/Jumping_FROG/bg/1.png" id="5_v8yme"]
+[ext_resource type="Texture2D" uid="uid://de7a0t56qabj7" path="res://microgames/Jumping_FROG/bg/2.png" id="6_pbl54"]
+[ext_resource type="Texture2D" uid="uid://d3sufvwwd7sv6" path="res://microgames/Jumping_FROG/bg/3.png" id="7_gotd2"]
+[ext_resource type="Texture2D" uid="uid://ddvl8w18bqilu" path="res://microgames/Jumping_FROG/bg/4.png" id="8_lf8bf"]
+[ext_resource type="Texture2D" uid="uid://dfqdwudv2h86x" path="res://microgames/Jumping_FROG/bg/line.png" id="11_v8yme"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bj650"]
+size = Vector2(1400, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agob1"]
+size = Vector2(68, 2769.5313)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muypk"]
+size = Vector2(64.5, 3600.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7kaw"]
+size = Vector2(1509, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpms3"]
+size = Vector2(1371.5, 242.625)
+
+[node name="Reach-The-Top" type="Node2D" unique_id=1633477611 node_paths=PackedStringArray("bomb_timer")]
+script = ExtResource("1_tcd18")
+game_name = "Jumping FROG"
+creator_name = "Tiffany / Shu (Discord)"
+game_description = "Control the frog to reach the top!
+- A/D to Move
+- Space to Jump
+- Left Click to Dash Down and JUMP HIGHER!"
+game_length = 10
+post_game_time = 0.0
+message = "Jump! And Reach The Top!!"
+control_type = 2
+bomb_timer = NodePath("BombTimer")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=188089262]
+offset_right = 640.0
+offset_bottom = 360.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=188089263]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="bg filter" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=295757846]
+position = Vector2(250, -1305)
+texture = ExtResource("3_gdnhn")
+
+[node name="bg" type="ParallaxBackground" parent="SubViewportContainer/SubViewport" unique_id=251394987]
+
+[node name="0" type="Sprite2D" parent="SubViewportContainer/SubViewport/bg" unique_id=1822711304]
+position = Vector2(252, -1291)
+texture = ExtResource("5_muypk")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="SubViewportContainer/SubViewport/bg" unique_id=1184474079]
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="1" type="Sprite2D" parent="SubViewportContainer/SubViewport/bg/ParallaxLayer" unique_id=839839017]
+position = Vector2(237, -1289)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("5_v8yme")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="SubViewportContainer/SubViewport/bg" unique_id=2022629813]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="2" type="Sprite2D" parent="SubViewportContainer/SubViewport/bg/ParallaxLayer2" unique_id=1516586306]
+position = Vector2(267, -1274)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("6_pbl54")
+
+[node name="3" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1437900933]
+position = Vector2(250, -1250)
+texture = ExtResource("7_gotd2")
+
+[node name="4" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=587840916]
+position = Vector2(250, -1249)
+texture = ExtResource("8_lf8bf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=475051974]
+position = Vector2(4, 153)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/StaticBody2D" unique_id=139255103]
+position = Vector2(236, 379)
+shape = SubResource("RectangleShape2D_bj650")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/StaticBody2D" unique_id=131070394]
+position = Vector2(-470, -1420.5)
+scale = Vector2(1, 1.28)
+shape = SubResource("RectangleShape2D_agob1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/StaticBody2D" unique_id=472141238]
+position = Vector2(963.75, -1408.75)
+shape = SubResource("RectangleShape2D_muypk")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/StaticBody2D" unique_id=1299901358]
+position = Vector2(242, -3109)
+shape = SubResource("RectangleShape2D_m7kaw")
+
+[node name="BalloonPatterns" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=700000001]
+position = Vector2(0, 39)
+
+[node name="Pattern1" type="Node2D" parent="SubViewportContainer/SubViewport/BalloonPatterns" unique_id=700000002]
+visible = false
+
+[node name="Balloon" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=700000011 instance=ExtResource("4_agob1")]
+position = Vector2(-94, 362)
+
+[node name="Balloon2" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=700000012 instance=ExtResource("4_agob1")]
+position = Vector2(472, 167)
+
+[node name="Balloon3" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=700000013 instance=ExtResource("4_agob1")]
+position = Vector2(252, -1336)
+
+[node name="Balloon4" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=655949308 instance=ExtResource("4_agob1")]
+position = Vector2(68, -99)
+
+[node name="Balloon5" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=306775673 instance=ExtResource("4_agob1")]
+position = Vector2(-159, -484)
+
+[node name="Balloon6" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=1766133930 instance=ExtResource("4_agob1")]
+position = Vector2(163, -782)
+
+[node name="Balloon7" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=1402896517 instance=ExtResource("4_agob1")]
+position = Vector2(636, -981)
+
+[node name="Balloon8" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=1467279224 instance=ExtResource("4_agob1")]
+position = Vector2(-96, -1517)
+
+[node name="Balloon9" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=1710430378 instance=ExtResource("4_agob1")]
+position = Vector2(-67, -2054)
+
+[node name="Balloon10" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=1118283426 instance=ExtResource("4_agob1")]
+position = Vector2(319, -2382)
+
+[node name="Balloon12" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=935192816 instance=ExtResource("4_agob1")]
+position = Vector2(538, -1842)
+
+[node name="Balloon11" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern1" unique_id=1698914359 instance=ExtResource("4_agob1")]
+position = Vector2(68, -2601)
+
+[node name="Pattern2" type="Node2D" parent="SubViewportContainer/SubViewport/BalloonPatterns" unique_id=700000003]
+visible = false
+
+[node name="Balloon" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=700000021 instance=ExtResource("4_agob1")]
+position = Vector2(737, 300)
+
+[node name="Balloon2" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=700000022 instance=ExtResource("4_agob1")]
+position = Vector2(335, -53)
+
+[node name="Balloon3" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=700000023 instance=ExtResource("4_agob1")]
+position = Vector2(-265, -213)
+
+[node name="Balloon4" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=42907488 instance=ExtResource("4_agob1")]
+position = Vector2(265, -434)
+
+[node name="Balloon5" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=944127573 instance=ExtResource("4_agob1")]
+position = Vector2(-20, -762)
+
+[node name="Balloon6" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=1182397596 instance=ExtResource("4_agob1")]
+position = Vector2(405, -1004)
+
+[node name="Balloon7" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=899868620 instance=ExtResource("4_agob1")]
+position = Vector2(696, -1317)
+
+[node name="Balloon8" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=1213782239 instance=ExtResource("4_agob1")]
+position = Vector2(18, -1438)
+
+[node name="Balloon9" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=531540411 instance=ExtResource("4_agob1")]
+position = Vector2(512, -1761)
+
+[node name="Balloon10" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=2090163325 instance=ExtResource("4_agob1")]
+position = Vector2(245, -2159)
+
+[node name="Balloon11" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern2" unique_id=2088686361 instance=ExtResource("4_agob1")]
+position = Vector2(-41, -2637)
+
+[node name="Pattern3" type="Node2D" parent="SubViewportContainer/SubViewport/BalloonPatterns" unique_id=700000004]
+visible = false
+
+[node name="Balloon" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=700000031 instance=ExtResource("4_agob1")]
+position = Vector2(270, 178)
+
+[node name="Balloon2" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=700000032 instance=ExtResource("4_agob1")]
+position = Vector2(30, -149)
+
+[node name="Balloon3" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=700000033 instance=ExtResource("4_agob1")]
+position = Vector2(287, -476)
+
+[node name="Balloon4" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=323435048 instance=ExtResource("4_agob1")]
+position = Vector2(803, -608)
+
+[node name="Balloon5" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=98574861 instance=ExtResource("4_agob1")]
+position = Vector2(560, -1068)
+
+[node name="Balloon6" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=770190364 instance=ExtResource("4_agob1")]
+position = Vector2(71, -1199)
+
+[node name="Balloon7" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=322057042 instance=ExtResource("4_agob1")]
+position = Vector2(-196, -1564)
+
+[node name="Balloon8" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=103948646 instance=ExtResource("4_agob1")]
+position = Vector2(-188, -739)
+
+[node name="Balloon9" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=1191112789 instance=ExtResource("4_agob1")]
+position = Vector2(242, -1997)
+
+[node name="Balloon10" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=1994371039 instance=ExtResource("4_agob1")]
+position = Vector2(-71, -2327)
+
+[node name="Balloon11" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern3" unique_id=1459509252 instance=ExtResource("4_agob1")]
+position = Vector2(161, -2650)
+
+[node name="Pattern4" type="Node2D" parent="SubViewportContainer/SubViewport/BalloonPatterns" unique_id=523275588]
+visible = false
+
+[node name="Balloon" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=2021302581 instance=ExtResource("4_agob1")]
+position = Vector2(-140, 192)
+
+[node name="Balloon2" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=766298923 instance=ExtResource("4_agob1")]
+position = Vector2(169, -100)
+
+[node name="Balloon3" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=2059125880 instance=ExtResource("4_agob1")]
+position = Vector2(1, -572)
+
+[node name="Balloon4" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=626108769 instance=ExtResource("4_agob1")]
+position = Vector2(589, -828)
+
+[node name="Balloon5" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=916954033 instance=ExtResource("4_agob1")]
+position = Vector2(423, -1238)
+
+[node name="Balloon6" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=1581108655 instance=ExtResource("4_agob1")]
+position = Vector2(-174, -1370)
+
+[node name="Balloon7" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=619356247 instance=ExtResource("4_agob1")]
+position = Vector2(105, -1868)
+
+[node name="Balloon8" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=1449704928 instance=ExtResource("4_agob1")]
+position = Vector2(430, -2154)
+
+[node name="Balloon9" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=1367148957 instance=ExtResource("4_agob1")]
+position = Vector2(-277, -2353)
+
+[node name="Balloon11" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=1142593238 instance=ExtResource("4_agob1")]
+position = Vector2(627, -374)
+
+[node name="Balloon10" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern4" unique_id=1087576305 instance=ExtResource("4_agob1")]
+position = Vector2(712, -2552)
+
+[node name="Pattern5" type="Node2D" parent="SubViewportContainer/SubViewport/BalloonPatterns" unique_id=1635518128]
+
+[node name="Balloon" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=343270254 instance=ExtResource("4_agob1")]
+position = Vector2(497, 378)
+
+[node name="Balloon2" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=1690011414 instance=ExtResource("4_agob1")]
+position = Vector2(494, -26)
+
+[node name="Balloon3" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=1565442215 instance=ExtResource("4_agob1")]
+position = Vector2(77, -375)
+
+[node name="Balloon4" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=1776549181 instance=ExtResource("4_agob1")]
+position = Vector2(629, -924)
+
+[node name="Balloon5" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=1937444122 instance=ExtResource("4_agob1")]
+position = Vector2(-177, -807)
+
+[node name="Balloon6" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=448802911 instance=ExtResource("4_agob1")]
+position = Vector2(221, -1203)
+
+[node name="Balloon7" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=435608868 instance=ExtResource("4_agob1")]
+position = Vector2(-6, -1726)
+
+[node name="Balloon8" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=1375597933 instance=ExtResource("4_agob1")]
+position = Vector2(658, -1998)
+
+[node name="Balloon9" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=1874013874 instance=ExtResource("4_agob1")]
+position = Vector2(304, -2411)
+
+[node name="Balloon11" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=2087922473 instance=ExtResource("4_agob1")]
+position = Vector2(597, -1548)
+
+[node name="Frog" parent="SubViewportContainer/SubViewport" unique_id=873189714 instance=ExtResource("1_fewrs")]
+position = Vector2(241, 429)
+
+[node name="Finish Line" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=905145861]
+position = Vector2(245, -2651)
+rotation = 1.5707964
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("11_v8yme")
+
+[node name="End" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1727190932]
+position = Vector2(0, -306)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/End" unique_id=314114495]
+position = Vector2(247, -2496.3125)
+shape = SubResource("RectangleShape2D_mpms3")
+
+[node name="BombTimer" parent="." unique_id=19968105 instance=ExtResource("2_bj650")]
+position = Vector2(70, 351)
+
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/End" to="." method="_on_end_body_entered"]
