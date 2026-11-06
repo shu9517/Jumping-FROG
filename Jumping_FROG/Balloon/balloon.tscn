@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5uknmnaa1cyi" path="res://microgames/Jumping_FROG/Balloon/balloon.gd" id="1_3j6t5"]
 [ext_resource type="Texture2D" uid="uid://dx06vmfbm23hn" path="res://microgames/Jumping_FROG/Balloon/balloon_sprite.png" id="1_nktvl"]
+[ext_resource type="AudioStream" uid="uid://dng6sarlk1ne2" path="res://microgames/Jumping_FROG/Balloon/balloon.wav" id="3_b2ql4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nktvl"]
 size = Vector2(116, 65)
@@ -18,3 +19,7 @@ vframes = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009258153]
 position = Vector2(-3, -31)
 shape = SubResource("RectangleShape2D_nktvl")
+
+[node name="sound" type="AudioStreamPlayer" parent="." unique_id=1252423917]
+stream = ExtResource("3_b2ql4")
+volume_db = -5.0

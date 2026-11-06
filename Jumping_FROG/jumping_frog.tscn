@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://d3sufvwwd7sv6" path="res://microgames/Jumping_FROG/bg/3.png" id="7_gotd2"]
 [ext_resource type="Texture2D" uid="uid://ddvl8w18bqilu" path="res://microgames/Jumping_FROG/bg/4.png" id="8_lf8bf"]
 [ext_resource type="Texture2D" uid="uid://dfqdwudv2h86x" path="res://microgames/Jumping_FROG/bg/line.png" id="11_v8yme"]
+[ext_resource type="FontFile" uid="uid://dqqswdee1cen0" path="res://microgames/Jumping_FROG/Font/My-Handwrite.otf" id="12_4nk4k"]
+[ext_resource type="AudioStream" uid="uid://jjvvm3ufagge" path="res://microgames/Jumping_FROG/music.mp3" id="13_gay31"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bj650"]
 size = Vector2(1400, 13)
@@ -30,11 +32,12 @@ size = Vector2(1371.5, 242.625)
 [node name="Reach-The-Top" type="Node2D" unique_id=1633477611 node_paths=PackedStringArray("bomb_timer")]
 script = ExtResource("1_tcd18")
 game_name = "Jumping FROG"
-creator_name = "Tiffany / Shu (Discord)"
+creator_name = "Tiffany"
 game_description = "Control the frog to reach the top!
 - A/D to Move
 - Space to Jump
-- Left Click to Dash Down and JUMP HIGHER!"
+- Left Click to Dash Down and JUMP HIGHER!
+Music Credit: \"Game Gaming Video Game Music\" by ViacheslavStarostin on Pixabay"
 game_length = 10
 post_game_time = 0.0
 message = "Jump! And Reach The Top!!"
@@ -81,10 +84,6 @@ texture = ExtResource("6_pbl54")
 [node name="3" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1437900933]
 position = Vector2(250, -1250)
 texture = ExtResource("7_gotd2")
-
-[node name="4" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=587840916]
-position = Vector2(250, -1249)
-texture = ExtResource("8_lf8bf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=475051974]
 position = Vector2(4, 153)
@@ -257,6 +256,7 @@ position = Vector2(627, -374)
 position = Vector2(712, -2552)
 
 [node name="Pattern5" type="Node2D" parent="SubViewportContainer/SubViewport/BalloonPatterns" unique_id=1635518128]
+visible = false
 
 [node name="Balloon" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=343270254 instance=ExtResource("4_agob1")]
 position = Vector2(497, 378)
@@ -288,14 +288,19 @@ position = Vector2(304, -2411)
 [node name="Balloon11" parent="SubViewportContainer/SubViewport/BalloonPatterns/Pattern5" unique_id=2087922473 instance=ExtResource("4_agob1")]
 position = Vector2(597, -1548)
 
-[node name="Frog" parent="SubViewportContainer/SubViewport" unique_id=873189714 instance=ExtResource("1_fewrs")]
-position = Vector2(241, 429)
-
 [node name="Finish Line" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=905145861]
+modulate = Color(1, 1, 1, 0.84705883)
 position = Vector2(245, -2651)
 rotation = 1.5707964
 scale = Vector2(0.44, 0.44)
 texture = ExtResource("11_v8yme")
+
+[node name="Frog" parent="SubViewportContainer/SubViewport" unique_id=873189714 instance=ExtResource("1_fewrs")]
+position = Vector2(241, 429)
+
+[node name="4" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=587840916]
+position = Vector2(250, -1249)
+texture = ExtResource("8_lf8bf")
 
 [node name="End" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1727190932]
 position = Vector2(0, -306)
@@ -306,5 +311,20 @@ shape = SubResource("RectangleShape2D_mpms3")
 
 [node name="BombTimer" parent="." unique_id=19968105 instance=ExtResource("2_bj650")]
 position = Vector2(70, 351)
+
+[node name="Hint" type="Label" parent="." unique_id=558693631]
+offset_left = 137.0
+offset_top = 10.0
+offset_right = 520.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("12_4nk4k")
+theme_override_font_sizes/font_size = 21
+text = "Hint: LEFT CLICK can dash down to jump HIGHER!!"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1096699151]
+stream = ExtResource("13_gay31")
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/End" to="." method="_on_end_body_entered"]

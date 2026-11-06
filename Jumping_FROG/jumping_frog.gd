@@ -2,6 +2,7 @@ extends Microgame
 
 @onready var player = get_node_or_null("SubViewportContainer/SubViewport/Frog")
 @onready var balloon = $SubViewportContainer/SubViewport/BalloonPatterns
+@onready var music = $Music
 
 # Use for testing
 #@onready var player = get_node_or_null("Frog")
@@ -18,6 +19,7 @@ func _ready() -> void:
 	super()
 	player.set_camera_limits(cam_left, cam_top, cam_right, cam_bottom)
 	level()
+	music.play()
 
 # choose a level
 func level() -> void:
